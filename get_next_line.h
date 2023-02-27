@@ -6,7 +6,7 @@
 /*   By: darrensdev <darrensdev@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 10:30:37 by darrensdev        #+#    #+#             */
-/*   Updated: 2022/11/21 15:24:45 by darrensdev       ###   ########.fr       */
+/*   Updated: 2022/11/21 18:48:52 by darrensdev       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 0
+#  define BUFFER_SIZE 5
 # endif
 
 # include <unistd.h>
