@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/17 13:21:53 by eleleux           #+#    #+#             */
-/*   Updated: 2022/11/22 16:10:17 by eleleux          ###   ########.fr       */
+/*   Created: 2022/11/22 16:20:10 by eleleux           #+#    #+#             */
+/*   Updated: 2022/11/22 17:36:44 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*readbuff_copystock(int fd, char *stock)
 {
@@ -106,18 +106,18 @@ char	*cleanstock(char *stock)
 char	*get_next_line(int fd)
 {
 	char		*newline;
-	static char	*stock;
+	static char	*stock[4096];
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 	{
-		free (stock);
+		free (stock[fd]);
 		return (NULL);
 	}
-	stock = readbuff_copystock(fd, stock);
-	if (!stock)
+	stock[fd] = readbuff_copystock(fd, stock[fd]);
+	if (!stock[fd])
 		return (NULL);
-	newline = give_line(stock, '\n');
-	stock = cleanstock(stock);
+	newline = give_line(stock[fd], '\n');
+	stock[fd] = cleanstock(stock[fd]);
 	if (newline[0] == '\0')
 	{
 		free (newline);
