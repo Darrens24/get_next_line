@@ -35,7 +35,7 @@ int main()
     while ((line = get_next_line(fd)) != NULL)
     {
         printf("%s", line);
-        free(line);
+        free(line);    // Each call allocates memory for a char *
     }
     close(fd);
     return (0);
